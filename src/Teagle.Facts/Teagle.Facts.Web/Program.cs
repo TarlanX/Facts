@@ -1,14 +1,17 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using Teagle.Facts.Web.Data;
 
 namespace Teagle.Facts.Web
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
@@ -20,7 +23,15 @@ namespace Teagle.Facts.Web
             try
             {
                 Log.Information("Starting web host");
-                CreateHostBuilder(args).Build().Run();
+
+                var host = CreateHostBuilder(args).Build();
+                using (var scope = host.Services.CreateScope())
+                {
+                    await DataInitializer.InitializeAsync(scope.ServiceProvider);
+                }
+
+                host.Run();
+
                 return 0;
             }
             catch (Exception ex)
