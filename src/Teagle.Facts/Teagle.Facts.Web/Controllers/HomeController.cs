@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Teagle.Facts.Web.Models;
+using Teagle.Facts.Web.ViewModels;
 
 namespace Teagle.Facts.Web.Controllers
 {

@@ -18,7 +18,6 @@ namespace Teagle.Facts.Web.Data.Configurations
             builder.Property(x => x.UpdatedAt);
             builder.Property(x => x.UpdatedBy).HasMaxLength(50);
 
-            builder.HasIndex(x => x.Content);
 
             builder.HasMany(x => x.Tags).WithMany(x => x.Facts);
         }

@@ -1,6 +1,4 @@
-using System;
-
-namespace Teagle.Facts.Web.Models
+namespace Teagle.Facts.Web.ViewModels
 {
     public class ErrorViewModel
     {

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Teagle.Facts.Web.Data;
+using Teagle.Facts.Web.Infrastructure.Mappers.Base;
 
 namespace Teagle.Facts.Web
 {
@@ -34,7 +35,12 @@ namespace Teagle.Facts.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
+
+            MapperRegistration.GetMapperConfiguration();
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
