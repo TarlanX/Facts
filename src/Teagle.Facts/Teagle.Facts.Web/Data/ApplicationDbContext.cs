@@ -1,22 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using Teagle.Facts.Web.Data.Base;
 
 namespace Teagle.Facts.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContextBase
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfigurationsFromAssembly(typeof(Startup).Assembly);
-            base.OnModelCreating(builder);
-        }
+        public DbSet<Fact> Facts { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+      
     }
 }
