@@ -1,25 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Teagle.Facts.Web.ViewModels;
 
 namespace Teagle.Facts.Web.Controllers
 {
-    public class HomeController : Controller
+    public class SiteController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public IActionResult Index(int? pageIndex, string tag, string search)
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
+            ViewData["Index"]= pageIndex;
+            ViewData["Tag"]= tag;
+            ViewData["Search"] = search;
             return View();
         }
 
