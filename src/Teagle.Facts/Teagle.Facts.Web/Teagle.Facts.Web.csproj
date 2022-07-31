@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-Teagle.Facts.Web-B96DB8B6-C417-486F-B0BC-4469FE3D54CC</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

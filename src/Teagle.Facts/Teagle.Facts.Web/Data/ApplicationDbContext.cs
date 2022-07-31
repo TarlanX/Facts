@@ -12,6 +12,7 @@ namespace Teagle.Facts.Web.Data
 
         public DbSet<Fact> Facts { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
       
     }
 }

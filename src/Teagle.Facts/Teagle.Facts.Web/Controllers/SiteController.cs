@@ -1,11 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using MediatR;
+using Teagle.Facts.Web.Mediatr;
 using Teagle.Facts.Web.ViewModels;
 
 namespace Teagle.Facts.Web.Controllers
 {
     public class SiteController : Controller
     {
+        private readonly IMediator _mediator;
+
+        public SiteController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         public IActionResult Index(int? pageIndex, string tag, string search)
         {
@@ -15,8 +24,10 @@ namespace Teagle.Facts.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
+           await _mediator.Publish(new ErrorNotification("Privacy test for notification"), HttpContext.RequestAborted);
+
             return View();
         }
 

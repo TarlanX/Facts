@@ -1,3 +1,5 @@
+using Calabonga.AspNetCore.Controllers.Extensions;
+using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -31,6 +33,7 @@ namespace Teagle.Facts.Web
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddUnitOfWork<ApplicationDbContext>();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
@@ -41,6 +44,8 @@ namespace Teagle.Facts.Web
             MapperRegistration.GetMapperConfiguration();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
+            //Можно заменить на MediatR, просто ниже сборка от Calabonga
+            services.AddCommandAndQueries(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
