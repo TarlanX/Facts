@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Calabonga.AspNetCore.Controllers" Version="3.0.1" />
     <PackageReference Include="Calabonga.EntityFrameworkCore.Entities.Base" Version="3.0.1" />
     <PackageReference Include="Calabonga.Microservices.Core" Version="4.0.0" />
