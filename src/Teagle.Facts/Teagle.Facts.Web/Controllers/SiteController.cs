@@ -16,14 +16,6 @@ namespace Teagle.Facts.Web.Controllers
             _mediator = mediator;
         }
 
-        public IActionResult Index(int? pageIndex, string tag, string search)
-        {
-            ViewData["Index"]= pageIndex;
-            ViewData["Tag"]= tag;
-            ViewData["Search"] = search;
-            return View();
-        }
-
         public async Task<IActionResult> Privacy()
         {
            await _mediator.Publish(new ErrorNotification("Privacy test for notification"), HttpContext.RequestAborted);

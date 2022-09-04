@@ -1,0 +1,21 @@
+﻿@model Calabonga.OperationResults.OperationResult<Calabonga.UnitOfWork.IPagedList<Teagle.Facts.Web.ViewModels.FactViewModel>>
+@{
+    Layout = "_LayoutColumn";
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model is not null)
+{
+
+    foreach (var fact in Model.Result.Items)
+    {
+        <partial name="_Fact" model="fact" />
+    }
+}
+
+@section Column
+{
+    <p>
+        Привет
+    </p>
+}
